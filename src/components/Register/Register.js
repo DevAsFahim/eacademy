@@ -8,7 +8,34 @@ const Register = () => {
             <div className="page_banner">
                 <h1>Authentication</h1>
             </div>
-            
+            <div className="connect">
+                <div className="container-fluid">
+                    <div className="row px-4 align-items-center">
+                        <div className="col-lg-6">
+                            <div className="connect_img">
+                                <img src={register} alt="" />
+                            </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="connect_form">
+                                <h1>Create your account</h1>
+                                <form>
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Your Name" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Your Email" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Your Password" />
+                                    </div>
+                                    <button className="btn default-btn d-block w-100">Register Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
