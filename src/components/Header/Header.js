@@ -12,7 +12,11 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const [mode, setMode] = useState(true)
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogOut = () => {
+        logOut()
+    }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg={mode ? 'light' : 'dark'} variant={mode ? 'light' : 'dark'}>
@@ -31,9 +35,9 @@ const Header = () => {
                             {mode ? <FaMoon className='text-dark' ></FaMoon> : <FaSun className='text-white'></FaSun>}
                         </Link>
                         {
-                            user.uid ?
+                            user?.uid ?
                                 <>
-                                    <Link to='/logout' className={`btn ${mode ? 'text-dark' : 'text-white'} `}>Logout</Link>
+                                    <Link onClick={handleLogOut} className={`btn ${mode ? 'text-dark' : 'text-white'} `}>Logout</Link>
                                     <img className='user_image' title={user?.displayName} src={user?.photoURL} alt="" />
                                 </>
                                 :
