@@ -26,8 +26,8 @@ const Header = () => {
                         <Link className='mode me-3' onClick={() => setMode(!mode)}>
                             {mode ? <FaMoon className='text-dark' ></FaMoon> : <FaSun className='text-white'></FaSun>}
                         </Link>
-                        <Link to='/register' className='default-btn btn me-2'>Register</Link>
-                        <Link to='/register' className='default-btn btn'>Log in</Link>
+                        <Link to='/login' className='btn'>Login</Link>
+                        <Link to='/register' className='default-btn btn'>Register Now</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
