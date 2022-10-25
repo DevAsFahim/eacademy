@@ -1,6 +1,7 @@
 import React from 'react';
 import './Register.css';
-import register from '../../assets/image/register.png'
+import register from '../../assets/image/register.png';
+import { FaGoogle } from 'react-icons/fa';
 
 const Register = () => {
     return (
@@ -30,6 +31,7 @@ const Register = () => {
                                         <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Your Password" />
                                     </div>
                                     <button className="btn default-btn d-block w-100">Register Now</button>
+                                    <button className="btn mt-2 btn-outline-primary d-block w-100"> <FaGoogle className='me-3'></FaGoogle> Register with Google</button>
                                 </form>
                             </div>
                         </div>

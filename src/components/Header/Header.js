@@ -7,9 +7,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const [mode, setMode] = useState(true)
+    const {user} = useContext(AuthContext)
+    
     return (
         <Navbar collapseOnSelect expand="lg" bg={mode ? 'light' : 'dark'} variant={ mode ? 'light' : 'dark'}>
             <Container>
@@ -28,6 +32,7 @@ const Header = () => {
                         </Link>
                         <Link to='/login' className='btn'>Login</Link>
                         <Link to='/register' className='default-btn btn'>Register Now</Link>
+                        <span> {user.displayName} </span>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
