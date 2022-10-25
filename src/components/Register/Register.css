@@ -20,3 +20,9 @@
     margin-bottom: 30px;
     color: #000;
 }
+
+@media screen and (max-width: 500px) {
+    .page_banner h1 {
+        font-size: 35px;
+    }
+}
