@@ -1,7 +1,6 @@
 import React from 'react';
 import './Register.css';
 import register from '../../assets/image/register.png';
-import { FaGoogle } from 'react-icons/fa';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -10,12 +9,14 @@ const Register = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
 
-    const { createUser, createUserWithGoogle } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
 
     // sign in with email and password 
     const handleCreateUser = (event) => {
         event.preventDefault()
         const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
         setSuccess(false)
@@ -28,21 +29,23 @@ const Register = () => {
                 console.log(user);
                 setSuccess(true)
                 form.reset()
+                handleUpdateUserProfile(name, photoURL);
             })
             .catch((error) => {
                 setError(error.message)
             });
     }
-    // sign in with google
-    const handleGoogleUser = () => {
-        createUserWithGoogle()
-        .then((result) => {
-            const user = result.user;
-            console.log(user);
-        }).catch((error) => {
-            setError(error.message)
-        });
+    
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+        .then(() => {})
+        .catch(error => console.error(error))
     }
+    
 
     return (
         <div>
@@ -62,7 +65,10 @@ const Register = () => {
                                 <h1>Create your account</h1>
                                 <form onSubmit={handleCreateUser}>
                                     <div className="mb-3">
-                                        <input type="text" className="form-control" placeholder="Your Name" required />
+                                        <input type="text" name='name' className="form-control" placeholder="Your Name" required />
+                                    </div>
+                                    <div className="mb-3">
+                                        <input type="text" name='photoURL' className="form-control" placeholder="Photo URL" required />
                                     </div>
                                     <div className="mb-3">
                                         <input type="email" name='email' className="form-control" placeholder="Your Email" required />
@@ -74,7 +80,6 @@ const Register = () => {
                                     {error && <p className="text-danger">{error}</p>}
                                     <button className="btn default-btn d-block w-100">Register Now</button>
                                 </form>
-                                <button onClick={handleGoogleUser} className="btn mt-2 btn-outline-primary d-block w-100"> <FaGoogle  className='me-3'></FaGoogle> Register with Google</button>
                             </div>
                         </div>
                     </div>

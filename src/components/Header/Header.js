@@ -12,10 +12,10 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
     const [mode, setMode] = useState(true)
-    const {user} = useContext(AuthContext)
-    
+    const { user } = useContext(AuthContext)
+
     return (
-        <Navbar collapseOnSelect expand="lg" bg={mode ? 'light' : 'dark'} variant={ mode ? 'light' : 'dark'}>
+        <Navbar collapseOnSelect expand="lg" bg={mode ? 'light' : 'dark'} variant={mode ? 'light' : 'dark'}>
             <Container>
                 <Navbar.Brand><Link to='/' className={mode ? 'text-dark' : 'text-white'}> <img src={logo} alt="" /> EAcademy </Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -30,9 +30,19 @@ const Header = () => {
                         <Link className='mode me-3' onClick={() => setMode(!mode)}>
                             {mode ? <FaMoon className='text-dark' ></FaMoon> : <FaSun className='text-white'></FaSun>}
                         </Link>
-                        <Link to='/login' className='btn'>Login</Link>
-                        <Link to='/register' className='default-btn btn'>Register Now</Link>
-                        <span> {user.displayName} </span>
+                        {
+                            user.uid ?
+                                <>
+                                    <Link to='/logout' className={`btn ${mode ? 'text-dark' : 'text-white'} `}>Logout</Link>
+                                    <img className='user_image' title={user?.displayName} src={user?.photoURL} alt="" />
+                                </>
+                                :
+                                <>
+                                    <Link to='/login' className={`btn ${mode ? 'text-dark' : 'text-white'} `}>Login</Link>
+                                    <Link to='/register' className='default-btn btn'>Register Now</Link>
+                                </>
+                        }
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

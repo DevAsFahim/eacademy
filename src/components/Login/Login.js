@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import register from '../../assets/image/register.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const { userLogIn } = useContext(AuthContext)
+    const { userLogIn, createUserWithGoogle } = useContext(AuthContext)
 
     const handleLogIn = (event) => {
         event.preventDefault()
@@ -28,6 +29,17 @@ const Login = () => {
                 console.log(error);
                 setError(error.message)
             });
+    }
+
+    // sign in with google
+    const handleGoogleUser = () => {
+        createUserWithGoogle()
+        .then((result) => {
+            const user = result.user;
+            console.log(user);
+        }).catch((error) => {
+            setError(error.message)
+        });
     }
 
     return (
@@ -57,6 +69,7 @@ const Login = () => {
                                     {error && <p className="text-danger">{error}</p>}
                                     <button className="btn default-btn d-block w-100">Login</button>
                                 </form>
+                                <button onClick={handleGoogleUser} className="btn mt-2 btn-outline-primary d-block w-100"> <FaGoogle  className='me-3'></FaGoogle> Login with Google</button>
                             </div>
                         </div>
                     </div>
