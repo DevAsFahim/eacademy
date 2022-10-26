@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import register from '../../assets/image/register.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const { userLogIn, createUserWithGoogle } = useContext(AuthContext)
+    const { userLogIn, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext)
 
     const handleLogIn = (event) => {
         event.preventDefault()
@@ -34,6 +35,15 @@ const Login = () => {
     // sign in with google
     const handleGoogleUser = () => {
         createUserWithGoogle()
+        .then((result) => {
+            const user = result.user;
+            console.log(user);
+        }).catch((error) => {
+            setError(error.message)
+        });
+    }
+    const handleGithubUser = () => {
+        createUserWithGithub()
         .then((result) => {
             const user = result.user;
             console.log(user);
@@ -68,8 +78,12 @@ const Login = () => {
                                     {success && <p className="text-success">Successfully Logged in</p>}
                                     {error && <p className="text-danger">{error}</p>}
                                     <button className="btn default-btn d-block w-100">Login</button>
+                                    <div className="text-end my-3">
+                                        <Link to='/register'>Create a new account.</Link>
+                                    </div>
                                 </form>
                                 <button onClick={handleGoogleUser} className="btn mt-2 btn-outline-primary d-block w-100"> <FaGoogle  className='me-3'></FaGoogle> Login with Google</button>
+                                <button onClick={handleGithubUser} className="btn mt-2 btn-outline-dark d-block w-100"> <FaGithub  className='me-3'></FaGithub> Login with Github</button>
                             </div>
                         </div>
                     </div>

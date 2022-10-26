@@ -4,6 +4,7 @@ import register from '../../assets/image/register.png';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [success, setSuccess] = useState(false);
@@ -22,6 +23,11 @@ const Register = () => {
         setSuccess(false)
         setError(false)
 
+        if(password.length < 6){
+            setError('password must be 6 charecter or more')
+            return;
+        }
+
 
         createUser(email, password)
             .then((userCredential) => {
@@ -35,17 +41,17 @@ const Register = () => {
                 setError(error.message)
             });
     }
-    
+
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = {
             displayName: name,
             photoURL: photoURL
         }
         updateUserProfile(profile)
-        .then(() => {})
-        .catch(error => console.error(error))
+            .then(() => { })
+            .catch(error => console.error(error))
     }
-    
+
 
     return (
         <div>
@@ -65,7 +71,7 @@ const Register = () => {
                                 <h1>Create your account</h1>
                                 <form onSubmit={handleCreateUser}>
                                     <div className="mb-3">
-                                        <input type="text" name='name' className="form-control" placeholder="Your Name" required />
+                                        <input type="text" name='name' className="form-control" placeholder="Your Full Name" required />
                                     </div>
                                     <div className="mb-3">
                                         <input type="text" name='photoURL' className="form-control" placeholder="Photo URL" required />
@@ -79,6 +85,9 @@ const Register = () => {
                                     {success && <p className="text-success">Successfully registered</p>}
                                     {error && <p className="text-danger">{error}</p>}
                                     <button className="btn default-btn d-block w-100">Register Now</button>
+                                    <div className="text-end my-3">
+                                        <Link to='/login'>Already have an account?</Link>
+                                    </div>
                                 </form>
                             </div>
                         </div>
