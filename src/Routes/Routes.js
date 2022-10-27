@@ -7,6 +7,7 @@ import Premium from "../components/Premium/Premium";
 import Register from "../components/Register/Register";
 import SingleCourse from "../components/SingleCourse/SingleCourse";
 import Main from "../layout/Main";
+import PrivateRout from "./PrivateRout";
 
 export const router = createBrowserRouter([
     {
@@ -36,8 +37,9 @@ export const router = createBrowserRouter([
                 element: <SingleCourse></SingleCourse>
             },
             {
-                path: '/premium',
-                element: <Premium></Premium>
+                path: '/premium/:id',
+                loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-dev-as-fahim.vercel.app/courses/${params.id}`),
+                element: <PrivateRout> <Premium></Premium> </PrivateRout>
             }
         ]
     },

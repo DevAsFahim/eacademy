@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaCrown } from 'react-icons/fa';
+import { useLoaderData } from 'react-router-dom';
 
 const Premium = () => {
+    const singleCourse = useLoaderData()
     return (
         <div>
             <div className="page_banner text-center">
@@ -9,6 +11,7 @@ const Premium = () => {
                     <FaCrown></FaCrown> <br />
                     Go Premium
                 </h1>
+                <h5>{singleCourse.title}</h5>
             </div>
             <div className="premium_container my-5">
                 <h2 className="text-success text-center mb-4">Become Pro and Explore More</h2>

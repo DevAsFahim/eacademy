@@ -18,8 +18,8 @@ const Courses = () => {
                                 <h4 className='text-center mb-4'>Find your courses</h4>
                                 <div className="sidebar_content">
                                     {
-                                        courses.map(course => <p className='sidebar_link' key={course.id}>
-                                            <Link  to={`/courses/${course._id}`}>{course.title}</Link>
+                                        courses.map(course => <p className='sidebar_link' key={course._id}>
+                                            <Link to={`/courses/${course._id}`}>{course.title}</Link>
                                         </p>)
                                     }
                                 </div>
@@ -33,7 +33,7 @@ const Courses = () => {
                                 <div className="course_content">
                                     <div className='row g-3'>
                                         {
-                                            courses.map(course => <Course key={course.id} course={course} ></Course>)
+                                            courses.map(course => <Course key={course._id} course={course} ></Course>)
                                         }
                                     </div>
                                 </div>

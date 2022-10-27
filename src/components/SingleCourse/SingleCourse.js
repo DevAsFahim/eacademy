@@ -18,7 +18,7 @@ const SingleCourse = () => {
                         <p className='text-muted'><FaStopwatch className='me-2'></FaStopwatch> <strong>Total time: {singleCourse.duration}</strong></p>
                         <p className='text-muted'><FaAccusoft className='me-2'></FaAccusoft> <strong>Total classes: {singleCourse.total_class}</strong></p>
                         <p className='text-muted'><FaMoneyBill className='me-2'></FaMoneyBill> <strong>Price: <span className='text-warning fs-4'>${singleCourse.price}</span></strong></p>
-                        <Link to='/premium' className="btn btn-warning d-block w-100"><FaCrown className='me-2'></FaCrown> Go Premium Access</Link>
+                        <Link to={`/premium/${singleCourse._id}`} className="btn btn-warning d-block w-100"><FaCrown className='me-2'></FaCrown> Go Premium Access</Link>
                     </div>
                 </div>
                 <div className="col-md-8">

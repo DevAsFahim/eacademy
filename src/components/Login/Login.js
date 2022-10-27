@@ -3,19 +3,24 @@ import register from '../../assets/image/register.png';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const { userLogIn, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext)
+    const { userLogIn, createUserWithGoogle, createUserWithGithub } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
+    const from = location.state?.from?.pathname || '/';
+
+
+    // log in user with email and password
     const handleLogIn = (event) => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         setSuccess(false)
         setError(false)
 
@@ -24,10 +29,10 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 form.reset()
+                navigate(from , {replace: true} )
                 setSuccess(true)
             })
             .catch((error) => {
-                console.log(error);
                 setError(error.message)
             });
     }
@@ -37,15 +42,19 @@ const Login = () => {
         createUserWithGoogle()
         .then((result) => {
             const user = result.user;
+            navigate("/")
             console.log(user);
         }).catch((error) => {
             setError(error.message)
         });
     }
+
+    // sign in with github
     const handleGithubUser = () => {
         createUserWithGithub()
         .then((result) => {
             const user = result.user;
+            navigate("/")
             console.log(user);
         }).catch((error) => {
             setError(error.message)
