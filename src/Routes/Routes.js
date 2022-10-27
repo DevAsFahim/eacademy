@@ -28,11 +28,11 @@ export const router = createBrowserRouter([
             {
                 path: '/courses',
                 element: <Courses></Courses>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://b610-lerning-platform-server-side-dev-as-fahim.vercel.app/courses')
             },
             {
                 path: '/courses/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`),
+                loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-dev-as-fahim.vercel.app/courses/${params.id}`),
                 element: <SingleCourse></SingleCourse>
             },
             {
