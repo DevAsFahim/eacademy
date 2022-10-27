@@ -1,4 +1,26 @@
-# Getting Started with Create React App
+# EAcademy
+
+**Live website link**
+[https://teal-trifle-a688d0.netlify.app/](https://e-academy-e31d2.web.app/)
+
+This project is created using `react.js` and `bootstrap` as a framework.
+* What's on this website
+    * It's an online course website.
+    * `React-router` used in here.
+    * Icons used in this site from `react-icons`.
+    * Loaded data from API.
+    * Used `loader` from react-router to get data.
+    * One can login or register in this account.
+    * firebase used as a database.
+
+* Technology used
+    * `React.js`
+    * `Bootstrap`
+    * `npm`
+    * `react-to-pdf`
+    * `API`
+    * `react-router-dom`
+    * `firebase`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
