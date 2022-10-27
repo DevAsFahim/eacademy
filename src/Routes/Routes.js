@@ -3,6 +3,7 @@ import Courses from "../components/Courses/Courses";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
+import PDF from "../components/PDF/PDF";
 import Premium from "../components/Premium/Premium";
 import Register from "../components/Register/Register";
 import SingleCourse from "../components/SingleCourse/SingleCourse";

@@ -1,7 +1,11 @@
 import React from 'react';
-import { FaAccusoft, FaCrown, FaMoneyBill, FaStopwatch } from 'react-icons/fa';
+import { FaAccusoft, FaCrown, FaFilePdf, FaMoneyBill, FaStopwatch } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
-import './SingleCourse.css'
+import './SingleCourse.css';
+import Pdf from 'react-to-pdf'
+
+
+const ref = React.createRef();
 
 const SingleCourse = () => {
     const singleCourse = useLoaderData();
@@ -9,10 +13,10 @@ const SingleCourse = () => {
         <div className='single_course container py-5'>
             <div className="row g-3">
                 <div className="col-md-4">
-                    <div className="course_short_details shadow rounded-3 px-3 py-4">
+                    <div className="course_short_details shadow rounded-3 px-3 py-4" ref={ref}>
                         <h5>{singleCourse.title}</h5>
                         <p>
-                            Rating: <span className="text-warning me-2">{singleCourse.rating.number} </span> 
+                            Rating: <span className="text-warning me-2">{singleCourse.rating.number} </span>
                             Quality: <span className="text-primary">{singleCourse.rating.badge}</span>
                         </p>
                         <p className='text-muted'><FaStopwatch className='me-2'></FaStopwatch> <strong>Total time: {singleCourse.duration}</strong></p>
@@ -25,9 +29,21 @@ const SingleCourse = () => {
                     <div className="course_details shadow rounded-3 px-3 py-4">
                         <h3>{singleCourse.title}</h3>
                         <p>{singleCourse.sub_title}</p>
-                        <div className="teacher_info mb-4">
-                            <img src={singleCourse.author.img} alt="" />
-                            <span className="text-success ms-2 fw-bold">{singleCourse.author.name}</span>
+                        <div className="row mb-4">
+                            <div className="col-sm-6">
+                                <div className="teacher_info mb-4">
+                                    <img src={singleCourse.author.img} alt="" />
+                                    <span className="text-success ms-2 fw-bold">{singleCourse.author.name}</span>
+                                </div>
+                            </div>
+                            <div className="col-sm-6 text-sm-end text-start">
+                                <Pdf targetRef={ref} filename="course.pdf">
+                                    {({ toPdf }) => (
+                                        <button onClick={toPdf} className="btn btn-outline-dark">Download PDF <FaFilePdf></FaFilePdf></button>
+                                    )}
+                                </Pdf>
+                                
+                            </div>
                         </div>
                         <img src={singleCourse.image_url} alt="" className="image_url w-100" />
                         <h5 className='mt-5 mb-3'>Description</h5>
