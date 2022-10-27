@@ -36,7 +36,7 @@ const Blog = () => {
                         <p className="blog_text mt-4">The private route component is similar to the public route, the only change is that redirect URL and authenticate condition. If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated. Private Routes in React Router (also called Protected Routes) require a user being authorized to visit a route (read: page). So if a user is not authorized for a specific page, they cannot access it. The most common example is authentication in a React application where a user can only access the protected pages when they are authorized (which means in this case being authenticated). Authorization goes beyond authentication though. For example, a user can also have roles and permissions which give a user access to specific areas of the application. We will start off with a minimal React project that uses React Router to navigate a user from one page to another page. In the following function component, we have matching Link and Route components from React Router for various routes. Furthermore, we have a so-called Index Route loaded with the Landing component and a so-called No Match Route loaded with inline JSX. Both act as fallback routes.</p>
                     </div>
                     <div className="blog">
-                        <h1 className="blog_title">3. What is Node? How does Node work?</h1>
+                        <h1 className="blog_title">4. What is Node? How does Node work?</h1>
                         <div className="blog_image">
                             <img src={nodeImg} alt="" />
                         </div>
