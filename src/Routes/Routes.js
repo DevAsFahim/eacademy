@@ -3,12 +3,13 @@ import Courses from "../components/Courses/Courses";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Home from "../components/Home/Home";
 import Login from "../components/Login/Login";
-import PDF from "../components/PDF/PDF";
 import Premium from "../components/Premium/Premium";
 import Register from "../components/Register/Register";
 import SingleCourse from "../components/SingleCourse/SingleCourse";
 import Main from "../layout/Main";
 import PrivateRout from "./PrivateRout";
+import Faq from "../components/Faq/Faq";
+import Blog from "../components/Blog/Blog"
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,14 @@ export const router = createBrowserRouter([
                 path: '/premium/:id',
                 loader: ({params}) => fetch(`https://b610-lerning-platform-server-side-dev-as-fahim.vercel.app/courses/${params.id}`),
                 element: <PrivateRout> <Premium></Premium> </PrivateRout>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     },
