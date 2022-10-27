@@ -1,11 +1,10 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Course from '../Course/Course';
 import './Cources.css'
 
 const Courses = () => {
     const courses = useLoaderData()
-    console.log(courses);
     return (
         <div>
             <div className="page_banner">
@@ -15,18 +14,20 @@ const Courses = () => {
                 <div className="container-fluid">
                     <div className="row px-3 g-4">
                         <div className="col-md-3">
-                            <div className="courses_sidebar">
-                                <h4 className='text-center'>Courses</h4>
+                            <div className="courses_sidebar shadow rounded-3 px-3 py-5">
+                                <h4 className='text-center mb-4'>Find your courses</h4>
                                 <div className="sidebar_content">
                                     {
-                                        courses.map(course => <p key={course.id}>{course.title}</p>)
+                                        courses.map(course => <p className='sidebar_link' key={course.id}>
+                                            <Link  to={`/courses/${course._id}`}>{course.title}</Link>
+                                        </p>)
                                     }
                                 </div>
                             </div>
                         </div>
                         <div className="col-md-9">
                             <div className="courses">
-                                <div className="courses_heading text-center m-auto">
+                                <div className="courses_heading text-center mb-4 mx-auto">
                                     <h1>We found {courses.length} courses for you </h1>
                                 </div>
                                 <div className="course_content">
