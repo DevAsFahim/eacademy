@@ -15,15 +15,17 @@ const githubProvider = new GithubAuthProvider()
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
 
-
+    // create new user with email and password
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
+    // add user profile picture and name
     const updateUserProfile = (profile) => {
         return updateProfile(auth.currentUser, profile)
     }
 
+    // load user information
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('user inside state change', currentUser);
@@ -35,17 +37,22 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+    // user login
     const userLogIn = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
+    // login with google 
     const createUserWithGoogle = () => {
         return signInWithPopup(auth, googleProvider)
     }
+
+    // login with github
     const createUserWithGithub = () => {
         return signInWithPopup(auth, githubProvider)
     }
 
+    // log out user
     const logOut = () => {
         return signOut(auth)
     }

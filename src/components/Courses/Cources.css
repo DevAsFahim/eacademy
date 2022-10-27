@@ -1,0 +1,27 @@
+.courses_container  {
+    padding: 100px 0;
+}
+.courses_heading {
+    width: 75%;
+}
+.courses_heading h1 {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.course_content .card:hover {
+    transform: translateY(-8px);
+    cursor: pointer;
+    transition: all .4s;
+}
+
+@media screen and (max-width: 700px) {
+    .courses_heading{
+        width: 100%;
+    }   
+    .courses_heading h1 {
+        font-size: 27px;
+        padding: 0 15px;
+    }
+    
+}
