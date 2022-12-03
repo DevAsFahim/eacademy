@@ -1,7 +1,7 @@
 # EAcademy
 
 **Live website link**
-[https://teal-trifle-a688d0.netlify.app/](https://e-academy-e31d2.web.app/)
+[https://e-academy-e31d2.web.app/](https://e-academy-e31d2.web.app/)
 
 This project is created using `react.js` and `bootstrap` as a framework.
 * What's on this website
