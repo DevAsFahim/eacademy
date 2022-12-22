@@ -5,6 +5,10 @@ img {
   text-align: center;
 }
 
+p, span {
+  font-family: sans-serif;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

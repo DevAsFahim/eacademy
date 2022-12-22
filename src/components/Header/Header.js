@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/image/logo.png'
 import './Header.css'
 import Container from 'react-bootstrap/Container';
@@ -25,10 +25,10 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="m-auto">
-                        <Link to='/' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>Home</Link>
-                        <Link to='/courses' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>Courses</Link>
-                        <Link to='/faq' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>FAQ</Link>
-                        <Link to='/blog' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>Blog</Link>
+                        <NavLink style={({isActive}) => ({color: isActive & "orange" })} to='/' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>Home</NavLink>
+                        <NavLink style={({isActive}) => ({color: isActive & "orange" })} to='/courses' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>Courses</NavLink>
+                        <NavLink style={({isActive}) => ({color: isActive & "orange" })} to='/faq' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>FAQ</NavLink>
+                        <NavLink style={({isActive}) => ({color: isActive & "orange" })} to='/blog' className={`nav_link ${mode ? 'text-dark' : 'text-white'} `}>Blog</NavLink>
                     </Nav>
                     <Nav className='d-flex align-items-center'>
                         <Link className='mode me-3' onClick={() => setMode(!mode)}>
