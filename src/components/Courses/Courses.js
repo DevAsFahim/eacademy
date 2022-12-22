@@ -19,7 +19,7 @@ const Courses = () => {
                                 <div className="sidebar_content">
                                     {
                                         courses.map(course => <p className='sidebar_link' key={course._id}>
-                                            <Link to={`/courses/${course._id}`}>{course.title}</Link>
+                                            <Link style={{fontFamily: "sans-serif"}} to={`/courses/${course._id}`}>{course.title}</Link>
                                         </p>)
                                     }
                                 </div>
